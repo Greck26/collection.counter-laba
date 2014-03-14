@@ -1,0 +1,153 @@
+import collections        #Импортируем модуль.  
+
+#Инструкция по пользованию программой.  
+def instruction():
+    print('Введите слова в словарь.')
+    print()
+    print('Для прекращения ввода нажмите {exit.}')
+    print()
+    print('Для удаления введеного слова введите {delete.} и после слово, которое хотите удалить')
+    print()
+    print('Для обнуления введите {clear.}')
+    print()
+    print('Для проверки текущего словаря введите {now.}')
+    print()
+    print('Для вывода списка в лексигрофическом порядке введите {order.}')
+    print()
+    print('Для вывода наиболее встречающихся n слов введите {most.}')
+    print()
+    print('Для вывода суммы всех слов введите {sum.}')
+    print()
+    print('Для просмотра инструкции по программе введете {instr.}')
+    print()
+
+c = collections.Counter() #Объявляем переменную с как словарь.
+
+word = ''
+
+#Множество служебных слов.  
+my_words = ['now.', 'delete.', 'clear.', 'exit.', 'instr.', 'order.', 'most.', 'sum.'] 
+
+print('Для просмотра инструкции по программе введете {instr.}')
+
+#Ввод слов в словарь.  
+while True:
+    print('Введите слово')
+    #Ввод слова.  
+    word = input()
+
+    #Проверка является ли слово служебным.  
+    if (not(word in my_words)):
+        c[word] += 1
+
+    #Заканчивам ввод.  
+    elif (word == 'exit.'):
+        break
+
+    #Удаление слова из словаря.  
+    elif (word == 'delete.'):
+        print('Введите слово, которое хотите удалить')
+        word1 = input()
+        c[word1] -= 1
+
+    #Обнуление словаря.  
+    elif (word == 'clear.'):
+        c.clear()
+
+    #Вывод уже имеющегося словаря.  
+    elif (word == 'now.'):
+        print(c)
+
+    #Вывод инструкции.  
+    elif (word == 'instr.'):
+        instruction()
+
+    #Вывод элементов в лексиграфич. порядке.  
+    elif (word == 'order.'):
+        print(list(c.elements()))
+
+    #Вывод наиболее встречающихся n слов.  
+    elif (word == 'most.'):
+        print('Введите n')
+        n = int(input())
+        print(c.most_common(n))
+
+    #Вывод общее кол-во элементов.  
+    elif (word == 'sum.'):
+        print(sum(c.values()))
+      
+
+
+print('Конечный словарь c')
+print(c)
+
+print('Введите новый словарь')
+
+#Ввод 2-ого словаря.  
+d = collections.Counter()
+
+
+#Ввод слов в словарь.  
+while True:
+    print('Введите слово')
+    #Ввод слова.  
+    word = input()
+
+    #Проверка является ли слово служебным.  
+    if (not(word in my_words)):
+        d[word] += 1
+
+    #Заканчивам ввод.  
+    elif (word == 'exit.'):
+        break
+
+    #Удаление слова из словаря.  
+    elif (word == 'delete.'):
+        print('Введите слово, которое хотите удалить')
+        word1 = input()
+        d[word1] -= 1
+
+    #Обнуление словаря.  
+    elif (word == 'clear.'):
+        d.clear()
+
+    #Вывод уже имеющегося словаря.  
+    elif (word == 'now.'):
+        print(d)
+
+    #Вывод инструкции.  
+    elif (word == 'instr.'):
+        instruction()
+
+    #Вывод элементов в лексиграфич. порядке.  
+    elif (word == 'order.'):
+        print(list(d.elements()))
+
+    #Вывод наиболее встречающихся n слов.  
+    elif (word == 'most.'):
+        print('Введите n')
+        n = int(input())
+        print(d.most_common(n))
+
+    #Вывод общее кол-во элементов.  
+    elif (word == 'sum.'):
+        print(sum(d.values()))
+
+
+print('Конечный словарь d')
+print(d)
+
+print('Counter также поддерживает сложение, вычитание, пересечение и объединение:')
+
+print('пересечение')
+print(c & d)
+
+print('объеденение')
+print(c | d)
+
+print('Вычитание')
+print(c-d)
+
+
+print('Программа завершена.')
+
