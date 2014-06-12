@@ -1,153 +1,243 @@
-import collections        #Импортируем модуль.  
+import collections        #Импортируем модуль.
+from random import randint as rand
 
-#Инструкция по пользованию программой.  
-def instruction():
-    print('Введите слова в словарь.')
-    print()
-    print('Для прекращения ввода нажмите {exit.}')
-    print()
-    print('Для удаления введеного слова введите {delete.} и после слово, которое хотите удалить')
-    print()
-    print('Для обнуления введите {clear.}')
-    print()
-    print('Для проверки текущего словаря введите {now.}')
-    print()
-    print('Для вывода списка в лексигрофическом порядке введите {order.}')
-    print()
-    print('Для вывода наиболее встречающихся n слов введите {most.}')
-    print()
-    print('Для вывода суммы всех слов введите {sum.}')
-    print()
-    print('Для просмотра инструкции по программе введете {instr.}')
-    print()
+class main():     
 
-c = collections.Counter() #Объявляем переменную с как словарь.
+     #Инструкция по пользованию программой.  
+     def instruction():
+         print('Введите слова в словарь.')
+         print()
+         print('Для прекращения ввода нажмите {exit.}')
+         print()
+         print('Для удаления введеного слова введите {delete.} и после слово, которое хотите удалить')
+         print()
+         print('Для обнуления введите {clear.}')
+         print()
+         print('Для проверки текущего словаря введите {now.}')
+         print()
+         print('Для вывода списка в лексигрофическом порядке введите {order.}')
+         print()
+         print('Для вывода наиболее встречающихся n слов введите {most.}')
+         print()
+         print('Для вывода суммы всех слов введите {sum.}')
+         print()
+         print('Для просмотра инструкции по программе введете {instr.}')
+         print()
 
-word = ''
+     c = collections.Counter() #Объявляем переменную с как словарь.
 
-#Множество служебных слов.  
-my_words = ['now.', 'delete.', 'clear.', 'exit.', 'instr.', 'order.', 'most.', 'sum.'] 
+     word = ''
 
-print('Для просмотра инструкции по программе введете {instr.}')
+     #Множество служебных слов.  
+     my_words = ['now.', 'delete.', 'clear.', 'exit.', 'instr.', 'order.', 'most.', 'sum.'] 
 
-#Ввод слов в словарь.  
-while True:
-    print('Введите слово')
-    #Ввод слова.  
-    word = input()
+     print('Для просмотра инструкции по программе введете {instr.}')
 
-    #Проверка является ли слово служебным.  
-    if (not(word in my_words)):
-        c[word] += 1
+     #Ввод слов в словарь.  
+     while True:
+         print('Введите слово')
+         #Ввод слова.  
+         word = input()
 
-    #Заканчивам ввод.  
-    elif (word == 'exit.'):
-        break
+         #Проверка является ли слово служебным.  
+         if (not(word in my_words)):
+             c[word] += 1
 
-    #Удаление слова из словаря.  
-    elif (word == 'delete.'):
-        print('Введите слово, которое хотите удалить')
-        word1 = input()
-        c[word1] -= 1
+         #Заканчивам ввод.  
+         elif (word == 'exit.'):
+             break
 
-    #Обнуление словаря.  
-    elif (word == 'clear.'):
-        c.clear()
+         #Удаление слова из словаря.  
+         elif (word == 'delete.'):
+             print('Введите слово, которое хотите удалить')
+             word1 = input()
+             c[word1] -= 1
 
-    #Вывод уже имеющегося словаря.  
-    elif (word == 'now.'):
-        print(c)
+         #Обнуление словаря.  
+         elif (word == 'clear.'):
+             c.clear()
 
-    #Вывод инструкции.  
-    elif (word == 'instr.'):
-        instruction()
+         #Вывод уже имеющегося словаря.  
+         elif (word == 'now.'):
+             print(c)
 
-    #Вывод элементов в лексиграфич. порядке.  
-    elif (word == 'order.'):
-        print(list(c.elements()))
+         #Вывод инструкции.  
+         elif (word == 'instr.'):
+             instruction()
 
-    #Вывод наиболее встречающихся n слов.  
-    elif (word == 'most.'):
-        print('Введите n')
-        n = int(input())
-        print(c.most_common(n))
+         #Вывод элементов в лексиграфич. порядке.  
+         elif (word == 'order.'):
+             print(list(c.elements()))
 
-    #Вывод общее кол-во элементов.  
-    elif (word == 'sum.'):
-        print(sum(c.values()))
+         #Вывод наиболее встречающихся n слов.  
+         elif (word == 'most.'):
+             print('Введите n')
+             n = int(input())
+             print(c.most_common(n))
+
+         #Вывод общее кол-во элементов.  
+         elif (word == 'sum.'):
+             print(sum(c.values()))
+           
+
+
+     print('Конечный словарь c')
+     print(c)
+
+     print('Введите новый словарь')
+
+     #Ввод 2-ого словаря.  
+     d = collections.Counter()
+
+
+     #Ввод слов в словарь.  
+     while True:
+         print('Введите слово')
+         #Ввод слова.  
+         word = input()
+
+         #Проверка является ли слово служебным.  
+         if (not(word in my_words)):
+             d[word] += 1
+
+         #Заканчивам ввод.  
+         elif (word == 'exit.'):
+             break
+
+         #Удаление слова из словаря.  
+         elif (word == 'delete.'):
+             print('Введите слово, которое хотите удалить')
+             word1 = input()
+             d[word1] -= 1
+
+         #Обнуление словаря.  
+         elif (word == 'clear.'):
+             d.clear()
+
+         #Вывод уже имеющегося словаря.  
+         elif (word == 'now.'):
+             print(d)
+
+         #Вывод инструкции.  
+         elif (word == 'instr.'):
+             instruction()
+
+         #Вывод элементов в лексиграфич. порядке.  
+         elif (word == 'order.'):
+             print(list(d.elements()))
+
+         #Вывод наиболее встречающихся n слов.  
+         elif (word == 'most.'):
+             print('Введите n')
+             n = int(input())
+             print(d.most_common(n))
+
+         #Вывод общее кол-во элементов.  
+         elif (word == 'sum.'):
+             print(sum(d.values()))
+
+
+     print('Конечный словарь d')
+     print(d)
+
+     print('Counter также поддерживает сложение, вычитание, пересечение и объединение:')
+
+     print('пересечение')
+     print(c & d)
+
+     print('объеденение')
+     print(c | d)
+
+     print('Вычитание')
+     print(c-d)
+
+     vse = lambda c, d:((c-d) | (c&d))
+     
+     print('все операции в функции лямбда')
+     print(vse(c, d))
+
+     print('Что бы продолжить работу с программой и начать изучение классов надо чтобы словарь состоял из объектов комнаты')
+     print('Соответсвует ли ваши словари условиям?')
+     ans = input()
+     if (ans == 'n'):
+          exit()
+
+     d1 = list(d)
+     c1 = list(c)
+
+     class Table:
+          def __init__(self,l,w,h):
+               self.long = l
+               self.width = w
+               self.height = h
+          def outing(self):
+               print (self.long,self.width,self.height)
       
+     class Kitchen(Table):
+          def howmany(self,n):
+               if n > 2:
+                    print ("слишком много таких предметов для одной комнаты")
+               self.places = n
+          def outplases(self):
+               print (self.places)
+               
+     for i in range(len(c1)):
+          print('Предмет - ', c1[i])
+          t_room1 = Kitchen(rand(1,10),rand(1,10),rand(1,10))
+          print('размеры')
+          t_room1.outing()
+          print('колличество')
+          t_room1.howmany(rand(1,10))
+          t_room1.outplases()
+          print('Обработка предмета ', c1[i], ' завершена')
 
+     print('The first part of tutorial is over')
+     print('Вторая часть программы это демонстрация работы со списками испульзуя map и zip')
 
-print('Конечный словарь c')
-print(c)
+     print('Введите список списков')
+     n = 3
+     a = [list(map(int, input().split())) for i in range(n)]
+     print(a)
 
-print('Введите новый словарь')
+     print('Введите список списков')
+     a1 = [list(map(int, input().split())) for i in range(n)]
+     print(a1)
 
-#Ввод 2-ого словаря.  
-d = collections.Counter()
+     print('Введите список списков')
+     a2 = [list(map(int, input().split())) for i in range(n)]
+     print(a2)
 
+     print('Cлияние списков')
+     lis = [a, a1, a2]
+     print(list(zip(*lis)))
 
-#Ввод слов в словарь.  
-while True:
-    print('Введите слово')
-    #Ввод слова.  
-    word = input()
+     print('Вторая часть программы завершена')
+     print('Третья часть программы это демонстрация организации чисел фиббоначи с помощью класса с иттератором')
 
-    #Проверка является ли слово служебным.  
-    if (not(word in my_words)):
-        d[word] += 1
+     #Вызов Fib(max) создает экземпляр класса Fib и вызывает метод __iter__() со значением (max). Метод __iter__()
+     #cохраняет значение (max) из переменной экземпляра чтобы другие методы могли обратиться к нему позже.
 
-    #Заканчивам ввод.  
-    elif (word == 'exit.'):
-        break
+     class Fib:                                       
+         def __init__(self, max):                    
+             self.max = max
+             
+         def __iter__(self):                         
+             self.a = 0
+             self.b = 1
+             return self
 
-    #Удаление слова из словаря.  
-    elif (word == 'delete.'):
-        print('Введите слово, которое хотите удалить')
-        word1 = input()
-        d[word1] -= 1
+         def __next__(self):                          
+             fib = self.a
+             if fib > self.max:
+                 raise StopIteration                 
+             self.a, self.b = self.b, self.a + self.b
+             return fib
 
-    #Обнуление словаря.  
-    elif (word == 'clear.'):
-        d.clear()
-
-    #Вывод уже имеющегося словаря.  
-    elif (word == 'now.'):
-        print(d)
-
-    #Вывод инструкции.  
-    elif (word == 'instr.'):
-        instruction()
-
-    #Вывод элементов в лексиграфич. порядке.  
-    elif (word == 'order.'):
-        print(list(d.elements()))
-
-    #Вывод наиболее встречающихся n слов.  
-    elif (word == 'most.'):
-        print('Введите n')
-        n = int(input())
-        print(d.most_common(n))
-
-    #Вывод общее кол-во элементов.  
-    elif (word == 'sum.'):
-        print(sum(d.values()))
-
-
-print('Конечный словарь d')
-print(d)
-
-print('Counter также поддерживает сложение, вычитание, пересечение и объединение:')
-
-print('пересечение')
-print(c & d)
-
-print('объеденение')
-print(c | d)
-
-print('Вычитание')
-print(c-d)
-
-
-print('Программа завершена.')
-
+     ob = Fib(100)
+     print('Числа фиббоначи до 100')
+     print(list(ob))
+           
+     print('Программа завершена.')
+     
+if (main == '__main__'):
+     main()
